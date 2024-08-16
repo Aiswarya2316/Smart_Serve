@@ -35,3 +35,9 @@ def userhome(req):
 
 def adminhome(req):
     return render(req,'adminhome.html')
+
+def profile(req):
+    return render(req,'profile.html')
+
+def upload(req):
+    return render(req,'upload.html')
