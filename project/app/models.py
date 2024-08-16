@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Register(models.Model):
-    Email = models.EmailField((""), max_length=254)
+    Email = models.EmailField(unique=True)
     name = models.TextField()
     phonenumber = models.IntegerField()
     password = models.IntegerField()

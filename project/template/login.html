@@ -139,12 +139,21 @@ input[type=submit]:hover {
 <p>Resize the browser window to see the responsive effect. When the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other.</p>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form action="" method="post">
+    {% csrf_token %}
     <div class="row">
       <h2 style="text-align:center">Login with Social Media or Manually</h2>
       <div class="vl">
         <span class="vl-innertext">or</span>
       </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
 
       <div class="col">
         <a href="#" class="fb btn">
@@ -163,10 +172,10 @@ input[type=submit]:hover {
           <p>Or sign in manually:</p>
         </div>
 
-        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="Email" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
-        <a href="../adminhome" style="color:white" class="btn">login</a>
+        <!-- <a href="../adminhome" style="color:white" class="btn">login</a> -->
       </div>
       
     </div>
@@ -176,7 +185,7 @@ input[type=submit]:hover {
 <div class="bottom-container">
   <div class="row">
     <div class="col">
-      <a href="../" style="color:white" class="btn">Sign up</a>
+      <a href="../register" style="color:white" class="btn">Sign up</a>
     </div>
     <div class="col">
       <a href="#" style="color:white" class="btn">Forgot password?</a>
