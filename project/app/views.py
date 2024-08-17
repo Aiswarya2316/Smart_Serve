@@ -5,15 +5,24 @@ from django.contrib import messages
 # Create your views here.
 
 def login(req):
+    if 'user' in req.session:
+        return redirect(userhome)
+
     if req.method=='POST':
         email1 = req.POST['Email']
         password = req.POST['password']
         try:
             data=Register.objects.get(Email=email1 ,password=password)
+            req.session['user']=data.Email
             return redirect(userhome) 
         except:
             messages.warning(req, "details not available.")
     return render(req,'login.html')
+
+def logout(req):
+    if 'user' in req.session:
+        del req.session['user']
+    return redirect(login)    
 
 def register(req):
     if req.method=='POST':
@@ -37,7 +46,21 @@ def adminhome(req):
     return render(req,'adminhome.html')
 
 def profile(req):
-    return render(req,'profile.html')
+    if 'user' in req.session:
+        data=Register.objects.get(Email=req.session['user'])
+        return render(req,'profile.html',{'data':data})
+    else:
+        return redirect(login)
 
 def upload(req):
-    return render(req,'upload.html')
+    if 'user' in req.session:
+        data=Register.objects.get(Email=req.session['user'])
+        if req.method=='POST':
+            name=req.POST['name']
+            phonenumber=req.POST['phonenumber']
+            location=req.POST['location']
+            Register.objects.filter(Email=req.session['user']).update(name=name ,phonenumber=phonenumber ,location=location)
+            return redirect(profile)
+        return render(req,'upload.html',{'data':data})
+    else:
+        return redirect(login)
