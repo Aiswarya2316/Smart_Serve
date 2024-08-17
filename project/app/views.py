@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
+from django.contrib.auth.models import User,auth
 
 # Create your views here.
 
@@ -16,12 +17,20 @@ def login(req):
             req.session['user']=data.Email
             return redirect(userhome) 
         except:
+            shop=auth.authenticate(username=email1 , password=password)
+            if shop is not None:
+                auth.login(req,shop)
+                req.session['shop']=email1
+                return redirect(adminhome)
             messages.warning(req, "details not available.")
     return render(req,'login.html')
 
 def logout(req):
     if 'user' in req.session:
         del req.session['user']
+    if 'shop' in req.session:
+        del req.session
+        auth.logout()
     return redirect(login)    
 
 def register(req):
@@ -43,6 +52,7 @@ def userhome(req):
     return render(req,'userhome.html')
 
 def adminhome(req):
+
     return render(req,'adminhome.html')
 
 def profile(req):
