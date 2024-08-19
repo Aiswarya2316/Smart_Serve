@@ -10,6 +10,10 @@ def get_usr(req):
     return data
 
 
+def get_shop(req):
+    data=Product.objects.get(category=req.session['shop'])
+    return data
+
 
 
 
@@ -129,3 +133,17 @@ def viewpro(req):
 
 def bookinghistry(req):
     return render(req,'mobileappliances/bookinghistry.html')
+
+def details(req):
+    if 'shop' in req.session:
+        # data=Register.objects.get(Email=req.session['user'])
+        return render(req,'mobileappliances/details.html',{'data':get_shop(req)})
+    else:
+        return redirect(login)
+    
+
+def viewproduct(req):
+    data=Product.objects.all()
+    return render(req,'viewproduct.html',{'data':data})
+
+

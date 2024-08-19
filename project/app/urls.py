@@ -12,4 +12,7 @@ path('viewuser',views.viewuser),
 path('addpro',views.addpro),
 path('viewpro',views.viewpro),
 path('bookinghistry',views.bookinghistry),
+path('details',views.details),
+path('viewproduct',views.viewproduct),
+
 ]
