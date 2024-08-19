@@ -19,7 +19,7 @@ class Product(models.Model):
     category = models.TextField()
     quantity = models.IntegerField()
     offerprice = models.IntegerField()
-    image = models.ImageField((""), upload_to=None, height_field=None, width_field=None, max_length=None)
+    image = models.FileField()
 
     def __str__(self):
         return self.name

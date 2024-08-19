@@ -38,11 +38,57 @@
   </div>
 </nav>
 
-<div class="container-fluid mt-3">
-  <h3>Navbar Forms</h3>
-  <p>You can also include forms inside the navigation bar.</p>
-</div>
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+    <h1>ADD PRODUCT</h1>
+    
 
+<!--     
+    <ul class="messages">
+       
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+     
+    </ul> -->
+  
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter product name" name="name" id="name" required>
+
+    <label for="discription"><b>discription</b></label>
+    <input type="text" placeholder="Enter discription" name="discription" id="discription" required>
+
+    <label for="price"><b>price number</b></label>
+    <input type="number" placeholder="Enter price number" name="price" id="price" required>
+
+    <label for="category"><b>category</b></label>
+    <input type="text" placeholder="Enter category" name="category" id="category" required>
+
+    <label for="quantity"><b>quantity</b></label>
+    <input type="number" placeholder="Enter quantity" name="quantity" id="quantity" required>
+
+    <label for="offerprice"><b>offerprice</b></label>
+    <input type="number" placeholder="Enter offerprice" name="offerprice" id="offerprice" required>
+
+    <label for="image"><b>image</b></label>
+    <input type="file" placeholder="Enter image" name="image" id="image" required>
+
+    <!-- <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+</form>
 </body>
 </html>
 
