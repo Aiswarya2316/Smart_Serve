@@ -147,3 +147,14 @@ def viewproduct(req):
     return render(req,'viewproduct.html',{'data':data})
 
 
+def edit(req,id):
+    data=Product.objects.get(pk=id)
+    if req.method=='POST':
+        name1=req.POST['name']
+        age2=req.POST['age']
+        mark3=req.POST['mark']
+        Product.objects.filter(pk=id).update(name=name1,age=age2,mark=mark3)
+        return redirect(viewpro)
+    return render(req,'mobileappliances/edit.html',{'data':data})
+
+
