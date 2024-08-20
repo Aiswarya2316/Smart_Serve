@@ -25,12 +25,12 @@ class Product(models.Model):
         return self.name
     
 class cart(models.Model):
-    user = models.TextField()
-    product = models.TextField()
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return self.user.name +' '+self.product.name
     
 class buy(models.Model):
     product = models.TextField()

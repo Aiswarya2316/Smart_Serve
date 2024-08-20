@@ -17,10 +17,11 @@
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  width:300px;
+    float: left;
+    margin-left: 100px;
+    padding-top: 5px;
+    margin-top: 100px;
 }
 
 .product {
@@ -34,8 +35,12 @@
 }
 
 .product img {
-    width: 100%;
-    height: auto;
+  min-width: 250px;
+  min-height: 300px;
+  max-width: 250px;
+  max-height: 300px;
+    /* width: 150px;
+    height: 150px; */
     display: block;
 }
 
@@ -109,8 +114,8 @@
           <h3>Product {{i.name}}</h3>
           <p class="price">{{i.price}}</p>
           <p class="quantity">{{i.quantity}}</p>
-          <a href="../details">Details</a>
-    <a href="../edit">Edit</a>
+          <a href="../details/{{i.pk}}">Details</a>
+    <a href="../edit/{{i.pk}}">Edit</a>
       </div>
   </div>
 </div>

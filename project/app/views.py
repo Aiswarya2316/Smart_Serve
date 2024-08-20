@@ -134,10 +134,11 @@ def viewpro(req):
 def bookinghistry(req):
     return render(req,'mobileappliances/bookinghistry.html')
 
-def details(req):
+def details(req,id):
     if 'shop' in req.session:
         # data=Register.objects.get(Email=req.session['user'])
-        return render(req,'mobileappliances/details.html',{'data':get_shop(req)})
+        data=Product.objects.get(pk=id)
+        return render(req,'mobileappliances/details.html',{'data':data})
     else:
         return redirect(login)
     
@@ -151,10 +152,21 @@ def edit(req,id):
     data=Product.objects.get(pk=id)
     if req.method=='POST':
         name1=req.POST['name']
-        age2=req.POST['age']
-        mark3=req.POST['mark']
-        Product.objects.filter(pk=id).update(name=name1,age=age2,mark=mark3)
+        price=req.POST['price']
+        offerprice=req.POST['offerprice']
+        quantity=req.POST['quantity']
+        Product.objects.filter(pk=id).update(name=name1,price=price,offerprice=offerprice,quantity=quantity,)
         return redirect(viewpro)
     return render(req,'mobileappliances/edit.html',{'data':data})
+
+
+def prodetails(req):
+    return render(req,'prodetails.html')
+
+def delete(req,id):
+    data=Product.objects.get(pk=id)
+    data.delete()
+    return redirect(viewpro) 
+
 
 
