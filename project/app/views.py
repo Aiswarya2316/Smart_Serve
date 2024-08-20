@@ -159,7 +159,6 @@ def edit(req,id):
         return redirect(viewpro)
     return render(req,'mobileappliances/edit.html',{'data':data})
 
-
 def prodetails(req):
     return render(req,'prodetails.html')
 
@@ -167,6 +166,39 @@ def delete(req,id):
     data=Product.objects.get(pk=id)
     data.delete()
     return redirect(viewpro) 
+
+def user_cart(req,id):
+    if 'user' in req.session:
+        product=Product.objects.get(pk=id)
+        user=get_usr(req)
+        qty=1
+        try:
+            dtls=cart.objects.get(product=product,user=user)
+            dtls.quantity+=1
+            dtls.save()
+        except:
+            data=cart.objects.create(product=product,user=user,quantity=qty)
+            data.save()
+        return redirect(user_view_cart)
+    else:
+        return redirect(login)
+    
+def user_view_cart(req):
+    return render(req,'cart.html')
+
+def buys(req):
+    cart_items = cart.objects.filter(user=req.user)
+    total_price = sum(item.total_price() for item in cart_items)
+
+    if req.method == 'POST':
+        # Process the order here
+        # For example, save the order to the database, charge the user, etc.
+        # After processing, you might want to clear the cart:
+        cart_items.delete()
+        return redirect('order_success')  # Redirect to an order success page
+
+    return render(req, 'buy.html', {'cart_items': cart_items, 'total_price': total_price})
+   
 
 
 
