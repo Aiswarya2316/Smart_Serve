@@ -206,7 +206,7 @@ def deletes(req,id):
     data.delete()
     return redirect(user_view_cart) 
 
-def buys(req):
+def buys(req,id):
     if 'user' in req.session:
         product=Product.objects.get(pk=id)
         user=get_usr(req)

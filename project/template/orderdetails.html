@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+        }
+        .navbar-right {
+            float: right;
+        }
+
+        /* Order details container */
+        .order-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-details {
+            margin-bottom: 20px;
+        }
+        .order-details p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .order-summary {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .order-summary span {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#cart">Cart</a>
+        <a href="#order" class="active">Order Details</a>
+        <div class="navbar-right">
+            <a href="#account">My Account</a>
+            <a href="#logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Order Details Container -->
+    <div class="order-container">
+        <h2>Order Details</h2>
+        <div class="order-details">
+            <p><strong>Order Number:</strong> #123456789</p>
+            <p><strong>Order Date:</strong> August 21, 2024</p>
+            <p><strong>Shipping Address:</strong> 1234 Elm Street, Springfield, IL 62704</p>
+            <p><strong>Payment Method:</strong> PhonePe</p>
+        </div>
+
+        <div class="order-summary">
+            <p>Product 1 <span>$20.00</span></p>
+            <p>Product 2 <span>$15.00</span></p>
+            <p>Shipping <span>$5.00</span></p>
+            <hr>
+            <p>Total <span>$40.00</span></p>
+        </div>
+    </div>
+
+</body>
+</html>
