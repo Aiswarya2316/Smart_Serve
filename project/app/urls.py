@@ -19,6 +19,9 @@ path('prodetails',views.prodetails),
 path('delete/<int:id>',views.delete),
 path('cart/<int:id>',views.user_cart),
 path('user_view_cart',views.user_view_cart),
-path('buy',views.buys),
+path('qty_incri/<int:id>',views.qty_incri),
+path('qty_decri/<int:id>',views.qty_decri),
+path('deletes/<int:id>',views.deletes),
+path('buys/<int:id>',views.buys),
 
 ]

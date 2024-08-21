@@ -37,11 +37,11 @@ class cart(models.Model):
     
     
 class buy(models.Model):
-    product = models.TextField()
-    user = models.TextField()
-    date_of_buying = models.IntegerField()
-    payment_status = models.TextField()
-    order_status = models.IntegerField()
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
+    date_of_buying = models.TextField()
+    payment_status = models.BooleanField(default=False)
+    # order_status = models.IntegerField()
     quantity = models.IntegerField()
 
     def __str__(self):

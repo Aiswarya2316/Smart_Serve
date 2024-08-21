@@ -85,7 +85,7 @@ profile
       category
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href= "../profile ">tv</a></li>
+      <li><a class="dropdown-item" href= "#">Tv</a></li>
       <li><a class="dropdown-item" href="#">fridge</a></li>
       <li><a class="dropdown-item" href="#">washing machine</a></li>
     </ul>
@@ -118,18 +118,19 @@ profile
     <div class="card mb-4">
       <div class="card-body text-center">
         <img src="{{i.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
-        <h5 class="my-3">Product name : {{i.name}}</h5>
-        <p class="text-muted mb-1">price : {{i.price}}</p>
+        <h5 class="my-3">Product name : {{i.product.name}}</h5>
+        <p class="text-muted mb-1">price : {{i.product.price}}</p>
         <p class="text-muted mb-4">Stock : {{i.quantity}}</p>
         <div class="d-flex justify-content-center mb-2">
-          <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary" data-mdb-button-initialized="true">Details</button>
-          <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Edit</button>
+        <a href="../qty_incri/{{i.pk}}" class="btn">+</a>
+        <a href="../qty_decri/{{i.pk}}" class="btn">-</a>
+        <a href="../buy/{{i.pk}}" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Buy</a>        
+        <a href="../deletes/{{i.pk}}" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">delete</a>
         </div>
       </div>
     </div>
     {% endfor %}
     <div>
-      <a href="../buy">Buy</a>
     </div>
 </body>
 </html>

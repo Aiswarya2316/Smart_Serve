@@ -184,20 +184,54 @@ def user_cart(req,id):
         return redirect(login)
     
 def user_view_cart(req):
-    return render(req,'cart.html')
+    if 'user' in req.session:
+        data=cart.objects.filter(user=get_usr(req))
+    return render(req,'cart.html',{'data':data})
+
+def qty_incri(req,id):
+    data=cart.objects.get(pk=id)
+    data.quantity+=1
+    data.save()
+    return redirect(user_view_cart)
+
+def qty_decri(req,id):
+    data=cart.objects.get(pk=id)
+    if data.quantity>1:
+        data.quantity-=1
+        data.save()
+    return redirect(user_view_cart)
+  
+def deletes(req,id):
+    data=cart.objects.get(pk=id)
+    data.delete()
+    return redirect(user_view_cart) 
 
 def buys(req):
-    cart_items = cart.objects.filter(user=req.user)
-    total_price = sum(item.total_price() for item in cart_items)
+    if 'user' in req.session:
+        product=Product.objects.get(pk=id)
+        user=get_usr(req)
+        qty=1
+        try:
+            dtls=cart.objects.get(product=product,user=user)
+            dtls.quantity+=1
+            dtls.save()
+        except:
+            data=cart.objects.create(product=product,user=user,quantity=qty)
+            data.save()
+        return redirect(buys)
+    else:
+        return redirect(login)
+    # cart_items = cart.objects.filter(user=req.user)
+    # total_price = sum(item.total_price() for item in cart_items)
 
-    if req.method == 'POST':
-        # Process the order here
-        # For example, save the order to the database, charge the user, etc.
-        # After processing, you might want to clear the cart:
-        cart_items.delete()
-        return redirect('order_success')  # Redirect to an order success page
+    # if req.method == 'POST':
+    #     # Process the order here
+    #     # For example, save the order to the database, charge the user, etc.
+    #     # After processing, you might want to clear the cart:
+    #     cart_items.delete()
+    #     return redirect('order_success')  # Redirect to an order success page
 
-    return render(req, 'buy.html', {'cart_items': cart_items, 'total_price': total_price})
+    # return render(req, 'buy.html', {'cart_items': cart_items, 'total_price': total_price})
    
 
 
