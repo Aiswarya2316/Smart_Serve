@@ -69,7 +69,7 @@ profile
   </div>
 
   <a class="navbar-brand" href="#">
-  <img src="static/images.png" alt="logo" style="width:60px" >
+  <img src="static/neon-glowing-profile-icon-3d-illustration-vector.jpg" alt="logo" style="width:60px" >
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">profile</a></li>
     <li><a class="dropdown-item" href="#">settings</a></li>
@@ -85,52 +85,57 @@ profile
       category
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href= "#">Tv</a></li>
+      <li><a class="dropdown-item" href= "../profile ">tv</a></li>
       <li><a class="dropdown-item" href="#">fridge</a></li>
       <li><a class="dropdown-item" href="#">washing machine</a></li>
     </ul>
   </div>
   <ul class="navbar-nav">
-  <form class="form-inline" action="">
+  <form class="form-inline" action="/action_page.php">
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn btn-success" type="submit">Search</button>
   </form>
 
 
 </ul> <br><br>
-<!-- <a class="navbar-brand" href="#" style="float:right">
-  <img  src="static/images.png" alt="logo" style="width:60px">
+<a class="navbar-brand" href="#" style="float:right">
+  <img  src="static/user.png" alt="logo" style="width:60px">
   <ul class="dropdown-menu">
     <li class="nav-item">
-    <a class="nav-link" href="../logout">log out</a>
+    <a class="nav-link" href="#">log out</a>
   </li>
-    <li><a class="dropdown-item" href="../profile">profile</a></li>
+    <li><a class="dropdown-item" href="#">profile</a></li>
     <li><a class="dropdown-item" href="#">settings</a></li>
     <li><a class="dropdown-item" href="#">edit profile</a></li>
   </ul>
-</a> -->
+</a>
 
 
 </nav>
 
-
+<div>
+   <img src="static/images.jpg" width="100%" height="100%">
+</div>
 {% for i in data %}
     <div class="card mb-4">
       <div class="card-body text-center">
         <img src="{{i.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
         <h5 class="my-3">Product name : {{i.product.name}}</h5>
         <p class="text-muted mb-1">price : {{i.product.price}}</p>
-        <p class="text-muted mb-4">Stock : {{i.quantity}}</p>
-        <div class="d-flex justify-content-center mb-2">
-        <a href="../qty_incri/{{i.pk}}" class="btn">+</a>
+        <a href="../qty_incri/{{i.pk}}" class="btn">+</a><p class="text-muted mb-4">{{i.quantity}}</p>  
         <a href="../qty_decri/{{i.pk}}" class="btn">-</a>
-        <a href="../buy/{{i.pk}}" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Buy</a>        
-        <a href="../deletes/{{i.pk}}" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">delete</a>
+        
+      
+        <div class="d-flex justify-content-center mb-2">
+
+          <!-- <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary" data-mdb-button-initialized="true">Details</button>
+          <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Edit</button> -->
+          <a href="../buys/{{i.pk}}">Buy now</a>
+          <a href="../deletes/{{i.pk}}">Delete</a>
+
         </div>
       </div>
     </div>
     {% endfor %}
-    <div>
-    </div>
 </body>
 </html>

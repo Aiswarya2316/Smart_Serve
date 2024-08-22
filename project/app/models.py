@@ -43,6 +43,8 @@ class buy(models.Model):
     payment_status = models.BooleanField(default=False)
     # order_status = models.IntegerField()
     quantity = models.IntegerField()
+    price = models.IntegerField()
+
 
     def __str__(self):
         return self.name

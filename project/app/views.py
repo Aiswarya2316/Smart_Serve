@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
+import datetime
 # Create your views here.
 
 def get_usr(req):
@@ -132,7 +133,9 @@ def viewpro(req):
 
 
 def bookinghistry(req):
-    return render(req,'mobileappliances/bookinghistry.html')
+    data=buy.objects.all()
+    return render(req,'mobileappliances/bookinghistry.html',{'data':data})
+
 
 def details(req,id):
     if 'shop' in req.session:
@@ -186,7 +189,7 @@ def user_cart(req,id):
 def user_view_cart(req):
     if 'user' in req.session:
         data=cart.objects.filter(user=get_usr(req))
-    return render(req,'cart.html',{'data':data})
+        return render(req,'cart.html',{'data':data})
 
 def qty_incri(req,id):
     data=cart.objects.get(pk=id)
@@ -207,32 +210,16 @@ def deletes(req,id):
     return redirect(user_view_cart) 
 
 def buys(req,id):
-    if 'user' in req.session:
-        product=Product.objects.get(pk=id)
+     if 'user' in req.session:
+        cart_product=cart.objects.get(pk=id)
         user=get_usr(req)
-        qty=1
-        try:
-            dtls=cart.objects.get(product=product,user=user)
-            dtls.quantity+=1
-            dtls.save()
-        except:
-            data=cart.objects.create(product=product,user=user,quantity=qty)
-            data.save()
-        return redirect(buys)
-    else:
-        return redirect(login)
-    # cart_items = cart.objects.filter(user=req.user)
-    # total_price = sum(item.total_price() for item in cart_items)
-
-    # if req.method == 'POST':
-    #     # Process the order here
-    #     # For example, save the order to the database, charge the user, etc.
-    #     # After processing, you might want to clear the cart:
-    #     cart_items.delete()
-    #     return redirect('order_success')  # Redirect to an order success page
-
-    # return render(req, 'buy.html', {'cart_items': cart_items, 'total_price': total_price})
-   
-
-
-
+        quantity=cart_product.quantity
+        date=datetime.datetime.now().strftime("%x")
+        order=buy.objects.create(product=cart_product.product,user=user,quantity=quantity,date_of_buying=date)
+        order.save()
+        return redirect(user_view_cart)
+     
+def order_details(req):
+    data=buy.objects.filter(user=get_usr(req))
+    return render(req,'orderdetails.html',{'data':data})
+    
