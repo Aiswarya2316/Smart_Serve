@@ -49,9 +49,6 @@
         <li class="nav-item">
           <a class="nav-link" href="../viewuser">View user</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../bookinghistory">Booking history</a>
-        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Search">
@@ -75,6 +72,8 @@
       <p class="text-muted mb-1">price : {{i.price}}</p>
       <p class="text-muted mb-4">Quantity : {{i.quantity}}</p>
       <p class="text-muted mb-4">Total price :{{i.price}}</p>
+      <p class="text-muted mb-4">customer :{{i.user.name}}</p>
+      <p class="text-muted mb-4">location :{{i.user.location}}</p>
       <div class="d-flex justify-content-center mb-2">
         <!-- <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary" data-mdb-button-initialized="true">Details</button>
         <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Edit</button> -->

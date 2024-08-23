@@ -79,19 +79,8 @@ profile
 
   <!-- Brand/logo -->
   
-  <!-- Links -->
-  <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-      category
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href= "../profile ">tv</a></li>
-      <li><a class="dropdown-item" href="#">fridge</a></li>
-      <li><a class="dropdown-item" href="#">washing machine</a></li>
-    </ul>
-  </div>
   <ul class="navbar-nav">
-  <form class="form-inline" action="/action_page.php">
+  <form class="form-inline" action="">
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn btn-success" type="submit">Search</button>
   </form>
@@ -119,7 +108,7 @@ profile
 {% for i in data %}
     <div class="card mb-4">
       <div class="card-body text-center">
-        <img src="{{i.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
+        <img src="{{i.product.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
         <h5 class="my-3">Product name : {{i.product.name}}</h5>
         <p class="text-muted mb-1">price : {{i.product.price}}</p>
         <a href="../qty_incri/{{i.pk}}" class="btn">+</a><p class="text-muted mb-4">{{i.quantity}}</p>  

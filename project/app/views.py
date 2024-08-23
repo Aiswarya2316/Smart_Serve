@@ -215,7 +215,8 @@ def buys(req,id):
         user=get_usr(req)
         quantity=cart_product.quantity
         date=datetime.datetime.now().strftime("%x")
-        order=buy.objects.create(product=cart_product.product,user=user,quantity=quantity,date_of_buying=date)
+        price=cart_product.product.price
+        order=buy.objects.create(product=cart_product.product,user=user,quantity=quantity,date_of_buying=date,price=price)
         order.save()
         return redirect(user_view_cart)
      
