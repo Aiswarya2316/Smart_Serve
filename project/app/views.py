@@ -224,3 +224,8 @@ def order_details(req):
     data=buy.objects.filter(user=get_usr(req))
     return render(req,'orderdetails.html',{'data':data})
     
+def delivery(req):
+    data=buy.objects.filter(user=get_usr(req))
+    # data1=Product.objects.filter(user=get_usr(req))
+    return render(req,'delivery.html',{'data':data })
+        

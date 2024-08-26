@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertically Divided Card</title>
+    <style>
+        .card {
+            display: flex;
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .card .left, .card .right {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .card .divider {
+            width: 2px;
+            background-color: #ddd;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="left">
+        <h2>Left Side</h2>
+        <p>This is the content on the left side of the card.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="right">
+        <h2>Right Side</h2>
+        <p>This is the content on the right side of the card.</p>
+    </div>
+</div>
+
+</body>
+</html>
