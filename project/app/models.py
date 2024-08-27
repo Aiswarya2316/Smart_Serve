@@ -44,16 +44,19 @@ class buy(models.Model):
     # order_status = models.IntegerField()
     quantity = models.IntegerField()
     price = models.IntegerField()
+    delivery = models.TextField()
 
 
     def __str__(self):
         return self.name
     
-# class delivery(models.Model):
-#     product = models.ForeignKey(Product,on_delete=models.CASCADE)
-#     user = models.ForeignKey(Product,on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.name
+class delivery(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
+    rout = models.TextField()
+    email =  models.EmailField(unique=True)
+    password = models.IntegerField()
+    def __str__(self):
+        return self.name
 
     

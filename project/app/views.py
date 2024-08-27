@@ -23,6 +23,8 @@ def login(req):
         return redirect(userhome)
     if 'shop' in req.session:
         return redirect(adminhome)
+    if 'deliveryss' in req.session:
+        return redirect(deliverys)
 
     if req.method=='POST':
         email=req.POST['Email']
@@ -38,9 +40,19 @@ def login(req):
                 req.session['shop']=email
 
                 return redirect(adminhome)
+            # try:
+            #     data=Register.objects.get(Email=email,password=password)
+            #     req.session['shop']=data.Email
+            #     return redirect(adminhome)
+            # except:
+            #     shop=delivery.objects.get(username=email,password=password)
+            #     if shop is not None:
+            #         delivery.login(req,deliverys)
+            #         req.session['deliveryss']=email
 
+            #         return redirect(deliverys)
 
-            messages.warning(req, "INVALID INPUT !")
+                messages.warning(req, "INVALID INPUT !")
     return render(req,'login.html')
 
 
@@ -224,8 +236,8 @@ def order_details(req):
     data=buy.objects.filter(user=get_usr(req))
     return render(req,'orderdetails.html',{'data':data})
     
-def delivery(req):
-    data=buy.objects.filter(user=get_usr(req))
-    # data1=Product.objects.filter(user=get_usr(req))
-    return render(req,'delivery.html',{'data':data })
+# def deliverys(req):
+#     data=buy.objects.filter(user=get_usr(req))
+#     # data1=Product.objects.filter(user=get_usr(req))
+#     return render(req,'delivery.html',{'data':data })
         
