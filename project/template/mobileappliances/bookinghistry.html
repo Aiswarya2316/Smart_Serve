@@ -29,7 +29,6 @@
   </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -74,6 +73,24 @@
       <p class="text-muted mb-4">Total price :{{i.price}}</p>
       <p class="text-muted mb-4">customer :{{i.user.name}}</p>
       <p class="text-muted mb-4">location :{{i.user.location}}</p>
+      {% if i.del_boy %}
+      
+      <p class="text-muted mb-4">avilable</p>
+      
+      {% else %}
+      <form action="../assigndel/{{i.pk}}" method="post">
+        {% csrf_token %}
+        <select name="delselect" >
+        {% for j in data1 %}
+          <option value="{{j.pk}}">{{j.name}}</option>
+
+          {% endfor %}
+        </select>
+        <input type="submit">
+      </form> 
+      {% endif %}
+  
+    
       <div class="d-flex justify-content-center mb-2">
         <!-- <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary" data-mdb-button-initialized="true">Details</button>
         <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Edit</button> -->

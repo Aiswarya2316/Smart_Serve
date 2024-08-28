@@ -40,17 +40,12 @@ def login(req):
                 req.session['shop']=email
 
                 return redirect(adminhome)
-            # try:
-            #     data=Register.objects.get(Email=email,password=password)
-            #     req.session['shop']=data.Email
-            #     return redirect(adminhome)
-            # except:
-            #     shop=delivery.objects.get(username=email,password=password)
-            #     if shop is not None:
-            #         delivery.login(req,deliverys)
-            #         req.session['deliveryss']=email
+         
+            else:
+                data=delivery.objects.get(email=email,password=password)
+                req.session['deliveryss']=data.email
 
-            #         return redirect(deliverys)
+                return redirect(deliverys)
 
                 messages.warning(req, "INVALID INPUT !")
     return render(req,'login.html')
@@ -63,6 +58,8 @@ def logout(req):
         del req.session['user']
     if 'shop' in req.session:
         del req.session['shop']
+    if 'deliveryss' in req.session:
+        del req.session['deliveryss']
     return redirect(login)
 
 
@@ -81,6 +78,26 @@ def register(req):
         except:
             messages.warning(req, "Email Already Exits , Try Another Email.")
     return render(req,'register.html')
+
+
+
+def delregister(req):
+
+    if req.method=='POST':
+        name1=req.POST['name']
+        email2=req.POST['email']
+        phonenumber3=req.POST['phonenumber']
+        location4=req.POST['rout']
+        password5=req.POST['password']
+    
+        try:
+            data=delivery.objects.create(name=name1,email=email2,phonenumber=phonenumber3,rout=location4,password=password5)
+            data.save()
+            return redirect(login)
+        except:
+            messages.warning(req, "Email Already Exits , Try Another Email.")
+    return render(req,'delregister.html')
+    print(delregister)
 
 
 def userhome(req):
@@ -146,7 +163,8 @@ def viewpro(req):
 
 def bookinghistry(req):
     data=buy.objects.all()
-    return render(req,'mobileappliances/bookinghistry.html',{'data':data})
+    data1=delivery.objects.all()
+    return render(req,'mobileappliances/bookinghistry.html',{'data':data,'data1':data1})
 
 
 def details(req,id):
@@ -236,8 +254,19 @@ def order_details(req):
     data=buy.objects.filter(user=get_usr(req))
     return render(req,'orderdetails.html',{'data':data})
     
-# def deliverys(req):
-#     data=buy.objects.filter(user=get_usr(req))
-#     # data1=Product.objects.filter(user=get_usr(req))
-#     return render(req,'delivery.html',{'data':data })
-        
+def deliverys(req):
+    # data=buy.objects.filter(deliveryss=get_usr(req))
+    # data1=Product.objects.filter(user=get_usr(req))
+    return render(req,'delivery.html')
+
+def assigndel(req,id):
+    if req.method=='POST':
+        data1=buy.objects.get(pk=id)
+        data1.del_boy=True
+        data1.save()
+        data=req.POST['delselect'] 
+        data2=delivery.objects.get(pk=id)
+        delivry=delpro.objects.create(delivery=data2,buy=data1) 
+        delivry.save()
+
+        return redirect(bookinghistry)  

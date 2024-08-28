@@ -4,6 +4,7 @@ urlpatterns = [
 path('',views.login),
 path('logout',views.logout),
 path('register',views.register),
+path('delregister',views.delregister),
 path('userhome',views.userhome),
 path('adminhome',views.adminhome),
 path('profile',views.profile),
@@ -24,6 +25,8 @@ path('qty_decri/<int:id>',views.qty_decri),
 path('deletes/<int:id>',views.deletes),
 path('buys/<int:id>',views.buys),
 path('order_details',views.order_details),
-path('delivery',views.delivery),
+path('delivery',views.deliverys),
+path('assigndel/<int:id>',views.assigndel),
+
 
 ]
