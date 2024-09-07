@@ -4,6 +4,8 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 import datetime
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 def get_usr(req):
@@ -71,6 +73,11 @@ def register(req):
         phonenumber3=req.POST['phonenumber']
         location4=req.POST['location']
         password5=req.POST['password']
+        subject = 'Registration details '
+        message = 'ur account uname {}  and password {}'.format(name1,password5)
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email2]
+        send_mail(subject, message, from_email, recipient_list,fail_silently=False)  
         try:
             data=Register.objects.create(name=name1,Email=email2,phonenumber=phonenumber3,location=location4,password=password5)
             data.save()
