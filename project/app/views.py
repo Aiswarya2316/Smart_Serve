@@ -199,8 +199,9 @@ def edit(req,id):
         return redirect(viewpro)
     return render(req,'mobileappliances/edit.html',{'data':data})
 
-def prodetails(req):
-    return render(req,'prodetails.html')
+def prodetails(req,id):
+    data=Product.objects.get(pk=id)
+    return render(req,'prodetails.html',{'data':data})
 
 def delete(req,id):
     data=Product.objects.get(pk=id)

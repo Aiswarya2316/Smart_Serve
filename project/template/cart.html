@@ -52,75 +52,53 @@ profile
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-      <!-- <img src="{% static 'user.png' %}" alt=""> -->
-       menu
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href= "../profile ">profile</a></li>
-      <li><a class="dropdown-item" href="#">view product</a></li>
-      <li><a class="dropdown-item" href="#">buy</a></li>
-      <li><a class="dropdown-item" href="../logout">logout</a></li>
-      <li><a class="dropdown-item" href="../cart">My cart</a></li>
-      
-    </ul>
-  </div>
-
-  <a class="navbar-brand" href="#">
-  <img src="static/neon-glowing-profile-icon-3d-illustration-vector.jpg" alt="logo" style="width:60px" >
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">profile</a></li>
-    <li><a class="dropdown-item" href="#">settings</a></li>
-    <li><a class="dropdown-item" href="#">edit profile</a></li>
-  </ul>
-</a>
-
-  <!-- Brand/logo -->
-  
-  <ul class="navbar-nav">
-  <form class="form-inline" action="">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-success" type="submit">Search</button>
-  </form>
-
-
-</ul> <br><br>
-<a class="navbar-brand" href="#" style="float:right">
-  <img  src="static/user.png" alt="logo" style="width:60px">
-  <ul class="dropdown-menu">
-    <li class="nav-item">
-    <a class="nav-link" href="#">log out</a>
-  </li>
-    <li><a class="dropdown-item" href="#">profile</a></li>
-    <li><a class="dropdown-item" href="#">settings</a></li>
-    <li><a class="dropdown-item" href="#">edit profile</a></li>
-  </ul>
-</a>
-
-
-</nav>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+          <img src="static/images.png" alt="Logo" style="width:40px;" class="rounded-pill">
+        </a>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="../userhome">home</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../profile">profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../cart/{{i.pk}}">Add to cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../logout">logout</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 
 <div>
-   <img src="static/images.jpg" width="100%" height="100%">
+   <img src="static/5 Ways To Increase Mobile Device Security_1600x933.jpg" width="100%" height="100%">
 </div>
-{% for i in data %}
+    {% for i in data %}
     <div class="card mb-4">
       <div class="card-body text-center">
         <img src="{{i.product.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
         <h5 class="my-3">Product name : {{i.product.name}}</h5>
-        <p class="text-muted mb-1">price : {{i.product.price}}</p>
+        <p class="text-muted mb-1">total:price : {{i.total_price}}</p>
         <a href="../qty_incri/{{i.pk}}" class="btn">+</a><p class="text-muted mb-4">{{i.quantity}}</p>  
         <a href="../qty_decri/{{i.pk}}" class="btn">-</a>
         
       
         <div class="d-flex justify-content-center mb-2">
 
-          <!-- <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary" data-mdb-button-initialized="true">Details</button>
-          <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Edit</button> -->
-          <a href="../buys/{{i.pk}}">Buy now</a>
-          <a href="../deletes/{{i.pk}}">Delete</a>
+           <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true"><a class="pro" href="../buys/{{i.pk}}">Buy now</a></button> 
+           <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true"><a class="pro" href="../deletes/{{i.pk}}">Delete</a>
+           </button> 
+          
 
         </div>
       </div>

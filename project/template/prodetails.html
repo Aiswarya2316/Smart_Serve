@@ -3,123 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon-like Product Card</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Product Details</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-.product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 300px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    text-align: center;
-}
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-.product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
+        .product-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-.product-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        .product-info {
+            padding: 15px;
+        }
 
-.product-info {
-    padding: 15px;
-}
+        .product-title {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
 
-.product-title {
-    font-size: 20px;
-    margin: 10px 0;
-    color: #333;
-}
+        .product-price {
+            font-size: 18px;
+            color: #e67e22;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
 
-.product-price {
-    font-size: 18px;
-    color: #e67e22;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
+        .product-description {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
 
-.product-rating {
-    margin: 10px 0;
-}
+        .add-to-cart {
+            background-color: #e67e22;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-.stars {
-    color: #f39c12;
-    font-size: 16px;
-}
-
-.review-count {
-    font-size: 14px;
-    color: #777;
-}
-
-.add-to-cart {
-    background-color: #e67e22;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.add-to-cart:hover {
-    background-color: #d35400;
-}
-
+        .add-to-cart a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <!-- {% for i in data %}
     <div class="product-card">
-        <img src="{{i.image.url}}" alt="Product Image" class="product-image">
+        <img src="{{ data.image.url }}" alt="{{ data.name }}" class="product-image">
         <div class="product-info">
-            <h3 class="product-title">Product Name{{i.name}}</h3>
-            <p class="product-price">price{{i.price}}</p>
-            <h4 class="product-details">about{{i.discription}}</h4>
-            <h4 class="product-stock">stock{{i.quantity}}</h4>
-            <div class="product-rating">
-                <span class="stars">★★★★☆</span>
-                <span class="review-count">(100 reviews)</span>
-            </div>
-            <button class="add-to-cart">Delete</button>
+            <h1 class="product-title">Name: {{ data.name }}</h1>
+            <p class="product-price">Price: ₹{{ data.price }}</p>
+            <p class="product-description">Description: {{ data.description }}</p>
+            <button class="add-to-cart">
+                <a href="../buys/{{ data.pk }}">Buy Now</a>
+            </button>
         </div>
     </div>
-    {% endfor %} -->
-
-    <h2 style="text-align:center">Product </h2>
-
-<div class="card">
-  <img src="{{data.image.url}}" alt="" style="width:100%">
-  <h1>{{data.name}}</h1>
-  <p>{{data.price}}</p>
-  <p>{{data.discription}}</p>
-  <!-- <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a> 
-    <a href="#"><i class="fa fa-twitter"></i></a>  
-    <a href="#"><i class="fa fa-linkedin"></i></a>  
-    <a href="#"><i class="fa fa-facebook"></i></a> 
-  </div> -->
-  <p>
-    <a href="../buy">Buy</p>
-</div>
-
 </body>
 </html>

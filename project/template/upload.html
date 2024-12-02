@@ -53,6 +53,33 @@ button:hover, a:hover {
 </head>
 <body>
 
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+          <img src="static/images.png" alt="Logo" style="width:40px;" class="rounded-pill">
+        </a>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="../userhome">home</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../profile">profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../cart/{{i.pk}}">Add to cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../logout">logout</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 <!-- <h2 style="text-align:center">User Profile Card</h2> -->
 
 <!-- <div class="card">
