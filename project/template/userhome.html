@@ -19,33 +19,30 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
     }
-    .form-inline {
-  float: right;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
 
-.desc {
-  padding: 15px;
-  text-align: center;
-}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-    </style>
+    .desc {
+      padding: 15px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -55,52 +52,36 @@
       menu
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href= "../profile ">profile</a></li>
+      <li><a class="dropdown-item" href="../profile">profile</a></li>
       <li><a class="dropdown-item" href="../viewproduct">view product</a></li>
-      <li><a class="dropdown-item" href="../buys/{{i.pk}}">buy</a></li>
-      <li><a class="dropdown-item" href="../logout">logout</a></li>
       <li><a class="dropdown-item" href="../order_details">orderdetails</a></li>
+      <li><a class="dropdown-item" href="../logout">logout</a></li>
     </ul>
   </div>
 
   <!-- Brand/logo -->
-  
+
   <!-- Links -->
-  <ul class="navbar-nav">
-    <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-      category
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href= "../tv ">Tv</a></li>
-      <li><a class="dropdown-item" href="../mobile">Mobile</a></li>
-      <li><a class="dropdown-item" href="../tablet">Tablet</a></li>
-      <li><a class="dropdown-item" href="../logout">logout</a></li>
-    </ul>
-  </div>
-   
-  <form class="d-flex">
+  <form class="d-flex ms-auto">
     <input class="form-control me-2" type="text" placeholder="Search">
     <button class="btn btn-primary" type="button">Search</button>
   </form>
-  
 
-</ul> <br><br>
-<ul class="navbar-nav ms-3">
-  <li class="nav-item dropdown">
+  <ul class="navbar-nav ms-3">
+    <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{% static 'images.png' %}" width="40" height="40" class="rounded-circle">
+        <img src="{% static 'images.png' %}" width="40" height="40" class="rounded-circle">
       </a>
-      <ul class="dropdown-menu" >
-          <li><a class="dropdown-item" href= "../profile ">Profile</a></li>
-          <li><a class="dropdown-item" href="../logout">Log out</a></li>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="../profile">Profile</a></li>
+        <li><a class="dropdown-item" href="../logout">Log out</a></li>
       </ul>
-  </li>
-</ul>
+    </li>
+  </ul>
 </nav>
 
 <div>
-   <img src=" static/phone-tech-logo-template_80022-original.jpg" width="100%" height="100%">
+  <img src=" static/phone-tech-logo-template_80022-original.jpg" width="100%" height="100%">
 </div>
 
 </body>

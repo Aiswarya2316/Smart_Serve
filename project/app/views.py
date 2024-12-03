@@ -25,8 +25,8 @@ def login(req):
         return redirect(userhome)
     if 'shop' in req.session:
         return redirect(adminhome)
-    if 'deliveryss' in req.session:
-        return redirect(deliverys)
+    # if 'deliveryss' in req.session:
+    #     return redirect(deliverys)
 
     if req.method=='POST':
         email=req.POST['Email']
@@ -43,11 +43,11 @@ def login(req):
 
                 return redirect(adminhome)
          
-            else:
-                data=delivery.objects.get(email=email,password=password)
-                req.session['deliveryss']=data.email
+            # else:
+            #     data=delivery.objects.get(email=email,password=password)
+            #     req.session['deliveryss']=data.email
 
-                return redirect(deliverys)
+            #     return redirect(deliverys)
 
                 messages.warning(req, "INVALID INPUT !")
     return render(req,'login.html')
@@ -145,7 +145,8 @@ def upload(req):
       
   
 def viewuser(req):
-    return render(req,'mobileappliances/viewuser.html')
+    data=Register.objects.all()
+    return render(req,'mobileappliances/viewuser.html',{'data':data})
 
 
 def addpro(req):
