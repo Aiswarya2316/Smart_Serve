@@ -24,7 +24,7 @@ path('qty_incri/<int:id>',views.qty_incri),
 path('qty_decri/<int:id>',views.qty_decri),
 path('deletes/<int:id>',views.deletes),
 path('buys/<int:id>',views.buys),
-path('order_details',views.order_details),
+path('orderdetails',views.order_details),
 path('delivery',views.deliverys),
 path('assigndel/<int:id>',views.assigndel),
 
